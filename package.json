@@ -3,16 +3,11 @@
   "version": "1.0.0",
   "description": "Project to pets",
   "main": "index.js",
+  "engines": {
+    "node": "12.13.0"
+  },
   "scripts": {
-    "prestart": "npm run build",
-    "start": "node index.js",
-    "build": "cd client && npm run build",
-    "client": "cd client && npm run start",
-    "server": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "lint": "standard",
-    "pretest": "npm run lint",
-    "test": "nyc --reporter=html mocha --recursive --timeout=30000"
+    "dev": "nodemon index.js"
   },
   "author": "Leonardo Jacques da Silva",
   "license": "ISC",
