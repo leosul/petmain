@@ -1,13 +1,14 @@
 {
   "name": "petmain",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Project to pets",
   "main": "index.js",
   "engines": {
     "node": "12.13.0"
   },
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "nyc --reporter=html mocha --recursive --timeout=30000"
   },
   "author": "Leonardo Jacques da Silva",
   "license": "ISC",
@@ -23,6 +24,8 @@
   "devDependencies": {
     "mocha": "^7.0.1",
     "mongoose": "^5.9.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "nyc": "^15.0.0",
+    "sinon": "^8.1.1"
   }
 }
