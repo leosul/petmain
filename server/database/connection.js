@@ -6,3 +6,4 @@ const connect = () => {
 }
 
 module.exports = { connect, mongoose }
+
