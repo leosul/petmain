@@ -19,7 +19,22 @@
         "fb": "^2.0.0",
         "google-auth-library": "^5.9.2",
         "jsonwebtoken": "^8.5.1",
-        "mongoose-paginate-v2": "^1.3.6"
+        "mongoose-paginate-v2": "^1.3.6",
+        "npm": "^6.10.2",
+        "prop-types": "^15.7.2",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-facebook-login": "^4.1.1",
+        "react-google-login": "^5.0.4",
+        "react-infinite-scroller": "^1.2.4",
+        "react-redux": "^6.0.0",
+        "react-router-dom": "^4.3.1",
+        "react-scripts": "^2.1.5",
+        "redux": "^4.0.1",
+        "redux-logger": "^3.0.6",
+        "redux-persist": "^5.10.0",
+        "redux-persist-transform-encrypt": "^2.0.1",
+        "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
         "mocha": "^7.0.1",
