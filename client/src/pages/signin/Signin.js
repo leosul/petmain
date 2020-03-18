@@ -6,6 +6,7 @@ import FacebookLogin from 'react-facebook-login'
 import { Link } from 'react-router-dom'
 
 const Signin = ({ R, onGoogleSignInSuccess, onGoogleSignInFailure, onFacebookSignInSuccess, onFacebookSignInFailure }) => {
+  console.log(process.env.REACT_APP_FACEBOOK_APP_ID)
   return (
     <div id='signin'>
       <header>
@@ -20,6 +21,7 @@ const Signin = ({ R, onGoogleSignInSuccess, onGoogleSignInFailure, onFacebookSig
           buttonText={R.strings.signInWithGoogle}
           cookiePolicy={'single_host_origin'} />
 
+        {/* 201859367709879 */}
         <FacebookLogin
           appId={process.env.REACT_APP_FACEBOOK_APP_ID}
           fields='name,email,picture'
