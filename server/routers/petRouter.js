@@ -12,7 +12,7 @@ router.get('/:id', async(req, res) => {
     const { params: { id } } = req
 
     try {
-        const pet = await petService.findById(i)
+        const pet = await petService.findById(id)
 
         if (pet) {
             res.json(pet)
