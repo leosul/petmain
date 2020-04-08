@@ -4,40 +4,35 @@ const { mongoose } = require('./../database/connection')
 const ObjectId = mongoose.SchemaTypes.ObjectId
 
 const WalkerSchema = new mongoose.Schema({
-  userId: {
-    type: ObjectId,
-    required: true,
-    index: true
-  },
-  title: {
-    type: String,
-    required: true,
-    maxlength: 100,
-    trim: true
-  },
-  country: {
-    type: String,
-    required: true,
-    maxlength: 100,
-    trim: true
-  },
-  text: {
-    type: String,
-    required: true,
-    maxlength: 300,
-    trim: true
-  },
-  price: {
-    type: Number,
-    required: true,
-    maxlength: 15,
-    trim: false
-  },
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now
-  }
+    title: {
+        type: String,
+        required: true,
+        maxlength: 100,
+        trim: true
+    },
+    country: {
+        type: String,
+        required: true,
+        maxlength: 100,
+        trim: true
+    },
+    text: {
+        type: String,
+        required: true,
+        maxlength: 300,
+        trim: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        maxlength: 15,
+        trim: false
+    },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
+    }
 })
 
 WalkerSchema.plugin(mongoosePaginate)

@@ -9,7 +9,7 @@ const findAll = (page) => {
         select: { createdAt: 0, __v: 0 },
     };
 
-    return Pet.paginate(options);
+    return Pet.paginate({}, options);
 };
 
 const findById = (_id) => {
