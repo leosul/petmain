@@ -1,16 +1,16 @@
 const { Router } = require('express')
-const authenticator = require('../middlewares/authenticator')
 const walkerRouter = require('./walkerRouter')
 const petRouter = require('./petRouter')
-const authRouter = require('./authRouter')
+const versionRouter = require('./versionRouter')
+const versionRepository = require('../repositories/versionRepository')
 const router = new Router()
 
 router.get('/', (_req, res) => {
-  res.send('petmain api')
+    res.send('PetMain API - Version: ' + versionRepository.getVersion())
 })
 
-router.use('/walkers', authenticator, walkerRouter)
-router.use('/pets', authenticator, petRouter)
-router.use('/auth', authRouter)
+router.use('/walkers', walkerRouter)
+router.use('/pets', petRouter)
+router.use('/version', versionRouter)
 
 module.exports = router
