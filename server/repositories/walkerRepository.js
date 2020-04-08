@@ -1,57 +1,56 @@
-const Walker = require('../models/Walker')
+const Walker = require("../models/Walker");
 
-const findAll = (userId, page) => {
-  const options = {
-    page,
-    limit: 20,
-    sort: { title: 1 },
-    customLabels: { docs: 'walkers' },
-    select: { userId: 0, createdAt: 0, __v: 0 }
-  }
+const findAll = (page) => {
+    const options = {
+        page,
+        limit: 20,
+        sort: { title: 1 },
+        customLabels: { docs: "walkers" },
+        select: { createdAt: 0, __v: 0 },
+    };
 
-  return Walker.paginate({ userId }, options)
-}
+    return Walker.paginate(options);
+};
 
-const findById = (_id, userId) => {
-  return Walker.findOne({ _id, userId })
-    .select({ userId: 0, createdAt: 0, __v: 0 })
-}
+const findById = (_id) => {
+    return Walker.findOne({ _id }).select({ createdAt: 0, __v: 0 });
+};
 
 const insert = (walkerData) => {
-  const walker = new Walker({ ...walkerData })
-  return walker.save()
-}
+    const walker = new Walker({...walkerData });
+    return walker.save();
+};
 
-const update = async (id, walkerData) => {
-  const walker = await findById(id, walkerData.userId)
+const update = async(id, walkerData) => {
+    const walker = await findById(id, walkerData);
 
-  if (!walker) {
-    throw new Error('not found')
-  }
+    if (!walker) {
+        throw new Error("not found");
+    }
 
-  Object.assign(walker, walkerData)
-  return walker.save()
-}
+    Object.assign(walker, walkerData);
+    return walker.save();
+};
 
-const remove = async (id, userId) => {
-  const walker = await findById(id, userId)
+const remove = async(id) => {
+    const walker = await findById(id);
 
-  if (!walker) {
-    throw new Error('not found')
-  }
+    if (!walker) {
+        throw new Error("not found");
+    }
 
-  return walker.remove()
-}
+    return walker.remove();
+};
 
-const count = (userId) => {
-  return Walker.countDocuments({ userId })
-}
+const count = () => {
+    return Walker.countDocuments();
+};
 
 module.exports = {
-  findAll,
-  findById,
-  insert,
-  update,
-  remove,
-  count
-}
+    findAll,
+    findById,
+    insert,
+    update,
+    remove,
+    count,
+};

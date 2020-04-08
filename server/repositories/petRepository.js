@@ -1,51 +1,50 @@
-const Pet = require('../models/Pet')
+const Pet = require("../models/Pet");
 
-const findAll = (userId = '5e8c6f363b533d553792b889', page) => {
+const findAll = (page) => {
     const options = {
         page,
         limit: 20,
         sort: { name: 1 },
-        customLabels: { docs: 'pets' },
-        select: { userId: 0, createdAt: 0, __v: 0 }
-    }
+        customLabels: { docs: "pets" },
+        select: { createdAt: 0, __v: 0 },
+    };
 
-    return Pet.paginate({ userId }, options)
-}
+    return Pet.paginate(options);
+};
 
-const findById = (_id, userId) => {
-    return Pet.findOne({ _id, userId })
-        .select({ userId: 0, createdAt: 0, __v: 0 })
-}
+const findById = (_id) => {
+    return Pet.findOne({ _id }).select({ createdAt: 0, __v: 0 });
+};
 
 const insert = (petData) => {
-    const pet = new Pet({...petData })
-    return pet.save()
-}
+    const pet = new Pet({...petData });
+    return pet.save();
+};
 
 const update = async(id, petData) => {
-    const pet = await findById(id, petData.userId)
+    const pet = await findById(id, petData);
 
     if (!pet) {
-        throw new Error('not found')
+        throw new Error("not found");
     }
 
-    Object.assign(pet, petData)
-    return pet.save()
-}
+    Object.assign(pet, petData);
+    return pet.save();
+};
 
-const remove = async(id, userId) => {
-    const pet = await findById(id, userId)
+const remove = async(id) => {
+    const pet = await findById(id);
 
     if (!pet) {
-        throw new Error('not found')
+        throw new Error("not found");
     }
 
-    return pet.remove()
-}
+    return pet.remove();
+};
 
-const count = (userId) => {
-    return Pet.countDocuments({ userId })
-}
+const count = () => {
+    return Pet.countDocuments();
+};
 
 module.exports = {
     findAll,
@@ -53,5 +52,5 @@ module.exports = {
     insert,
     update,
     remove,
-    count
-}
+    count,
+};

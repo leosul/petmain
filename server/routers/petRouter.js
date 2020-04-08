@@ -3,16 +3,16 @@ const router = new Router()
 const petService = require('../services/petService')
 
 router.get('/', async(req, res) => {
-    const { userId, query } = req
-    const pets = await petService.findAll(userId, query.page)
+    const { query } = req
+    const pets = await petService.findAll(query.page)
     res.json(pets)
 })
 
 router.get('/:id', async(req, res) => {
-    const { params: { id }, userId } = req
+    const { params: { id } } = req
 
     try {
-        const pet = await petService.findById(id, userId)
+        const pet = await petService.findById(i)
 
         if (pet) {
             res.json(pet)
@@ -25,8 +25,7 @@ router.get('/:id', async(req, res) => {
 })
 
 router.post('/', async(req, res) => {
-    const { body, userId } = req
-    //body.userId = userId
+    const { body } = req
 
     try {
         const pet = await petService.insert(body)
@@ -37,8 +36,7 @@ router.post('/', async(req, res) => {
 })
 
 router.put('/:id', async(req, res) => {
-    const { body, params: { id }, userId } = req
-    body.userId = userId
+    const { body, params: { id } } = req
 
     try {
         const pet = await petService.update(id, body)
@@ -49,10 +47,10 @@ router.put('/:id', async(req, res) => {
 })
 
 router.delete('/:id', async(req, res) => {
-    const { params: { id }, userId } = req
+    const { params: { id } } = req
 
     try {
-        await petService.remove(id, userId)
+        await petService.remove(id)
         res.sendStatus(204)
     } catch (error) {
         res.status(400).send(error.message)
