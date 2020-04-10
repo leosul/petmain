@@ -71,19 +71,19 @@ class PetFormContainer extends Component{
           const res = await this.fetcher.post('pets', pet)
           if (res.ok) {
             this.setState(() => ({ redirect: true }))
-            //this.props.dispatch(showToast(this.props.R.strings.bookSaved))
+            this.props.dispatch()
           } else {
             this.setState(() => ({ saving: false }))
-            //this.props.dispatch(showToast(this.props.R.strings.savingFailedTryAgain))
+            this.props.dispatch()
           }
         } else {
           const res = await this.fetcher.put(`pets/${id}`, pet)
           if (res.ok) {
             this.setState(() => ({ redirect: true }))
-            //this.props.dispatch(showToast(this.props.R.strings.bookSaved))
+            this.props.dispatch()
           } else {
             this.setState(() => ({ saving: false }))
-            //this.props.dispatch(showToast(this.props.R.strings.savingFailedTryAgain))
+            this.props.dispatch()
           }
         }
       }
