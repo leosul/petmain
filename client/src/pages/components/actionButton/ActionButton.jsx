@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../../components/ActionButton/ActionButton.css'
+import './ActionButton.css'
 
 const ActionButton = ({ icon, title, onClick }) => (
   <button className={`action-button ${icon}`} title={title} onClick={onClick} />

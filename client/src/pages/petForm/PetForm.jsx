@@ -1,9 +1,9 @@
 import React from 'react'
 import './PetForm.css'
-import ActionButton from './../components/ActionButton/ActionButton'
+import { ActionButton, InputButton } from './../components'
 
 export default props => (
-    <div id='pet-form'>
+    <div className='pet-form'>
         <header>
             <h2>Register your PetMain</h2>
 
@@ -32,7 +32,9 @@ export default props => (
                     <input type='text' name='weight' onChange={props.onChange} value={props.weight} />
                 </label>
 
-                <button type='submit' >Save</button>
+                <div>
+                    <InputButton type='submit' text={'Save'} disabled={false} />
+                </div>
             </div>
         </form>
     </div>
