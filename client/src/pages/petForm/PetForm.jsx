@@ -1,46 +1,39 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import './PetForm.css'
+import ActionButton from './../components/ActionButton/ActionButton'
 
-const PetForm = ({
-    name,
-    breed,
-    size,
-    weight,
-    onChange,
-    onSubmit
-}) => (
-        <div id='pet-form'>
-            <header>
-                <h2>Page Pet Form</h2>
-            </header>
+export default props => (
+    <div id='pet-form'>
+        <header>
+            <h2>Register your PetMain</h2>
 
-            <form method='post' action='/' onSubmit={onSubmit}>
-                <label for='name'>Name</label>
-                <input type='text' id='name' value={name} onChange={onChange}></input>
+            <nav>
+                <ActionButton icon='delete' title={'Delete'} onClick={props.onClickDelete} />
+            </nav>
+        </header>
+        <form onSubmit={props.onSubmit}>
+            <div>
+                <label className='input-field'>
+                    <span>Name</span>
+                    <input type='text' name='name' onChange={props.onChange} value={props.name} />
 
-                <label for='breed'>Breed</label>
-                <input type='text' id='breed' value={breed} onChange={onChange}></input>
+                </label>
 
-                <label for='size'>Size</label>
-                <input type='text' id='size' value={size} onChange={onChange}></input>
+                <label className='input-field'>
+                    <span>Breed</span>
+                    <input type='text' name='breed' onChange={props.onChange} value={props.breed} />
+                </label>
+                <label className='input-field'>
+                    <span>Size</span>
+                    <input type='text' name='size' onChange={props.onChange} value={props.size} />
+                </label>
+                <label className='input-field'>
+                    <span>Weight</span>
+                    <input type='text' name='weight' onChange={props.onChange} value={props.weight} />
+                </label>
 
-                <label for='weight'>Weight</label>
-                <input type='text' id='weight' value={weight} onChange={onChange}></input>
-
-                <div>
-                    <input type='submit' />
-                </div>
-            </form>
-        </div>
-    )
-
-PetForm.propTypes = {
-    name: PropTypes.string.isRequired,
-    breed: PropTypes.string.isRequired,
-    size: PropTypes.string.isRequired,
-    weight: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
-}
-
-export default PetForm
+                <button type='submit' >Save</button>
+            </div>
+        </form>
+    </div>
+)

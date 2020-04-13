@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './pages/app/App'
+//import App from './pages/app/App'
 
-import PetForm from './pages/petForm/PetForm'
+import PetFormContainer from './pages/petForm/PetFormContainer'
 
-ReactDOM.render(<PetForm />, document.getElementById('root'))
+//import PetFormTestContainer from './pages/petForm/PetFormTeste/PetFormTestContainer'
+
+ReactDOM.render( < PetFormContainer/ > , document.getElementById('root'))
