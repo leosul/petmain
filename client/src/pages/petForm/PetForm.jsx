@@ -1,41 +1,82 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './PetForm.css'
-import { ActionButton, InputButton } from './../components'
+import { ActionButton, InputButton, InputField } from './../components'
 
-export default props => (
+const PetForm = props => (
     <div className='pet-form'>
         <header>
             <h2>Register your PetMain</h2>
-
             <nav>
                 <ActionButton icon='delete' title={'Delete'} onClick={props.onClickDelete} />
             </nav>
         </header>
         <form onSubmit={props.onSubmit}>
+            <InputField
+                label={'Name'}
+                name='name'
+                value={props.name}
+                onChange={props.onChange}
+                readOnly={false}
+                required
+                maxLength={100}
+                pattern='.*[\w]+.*'
+                autoFocus />
+
+            <InputField
+                label={'Breed'}
+                name='breed'
+                value={props.breed}
+                onChange={props.onChange}
+                readOnly={false}
+                pattern='.*[\w]+.*'
+                required
+                maxLength={100}
+                dataListItems={[
+                    'Mutt',
+                    'Pit Bull',
+                    'Rottweiler',
+                    'Poodle'
+                ]} />
+
+            <InputField
+                label={'Size'}
+                name='size'
+                value={props.size}
+                onChange={props.onChange}
+                readOnly={false}
+                required
+                maxLength={100}
+                pattern='.*[\w]+.*'
+                autoFocus />
+
+
+            <InputField
+                label={'Weight'}
+                name='weight'
+                value={props.weight}
+                onChange={props.onChange}
+                readOnly={false}
+                required
+                maxLength={100}
+                pattern='.*[\w]+.*'
+                autoFocus />
+
+            <p />
             <div>
-                <label className='input-field'>
-                    <span>Name</span>
-                    <input type='text' name='name' onChange={props.onChange} value={props.name} />
-
-                </label>
-
-                <label className='input-field'>
-                    <span>Breed</span>
-                    <input type='text' name='breed' onChange={props.onChange} value={props.breed} />
-                </label>
-                <label className='input-field'>
-                    <span>Size</span>
-                    <input type='text' name='size' onChange={props.onChange} value={props.size} />
-                </label>
-                <label className='input-field'>
-                    <span>Weight</span>
-                    <input type='text' name='weight' onChange={props.onChange} value={props.weight} />
-                </label>
-
-                <div>
-                    <InputButton type='submit' text={'Save'} disabled={false} />
-                </div>
+                <InputButton type='submit' text={'Save'} disabled={false} />
             </div>
         </form>
     </div>
 )
+
+PetForm.propTypes = {
+    name: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+    size: PropTypes.string.isRequired,
+    weight: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired
+}
+
+export default PetForm
