@@ -4,14 +4,14 @@ import './PetForm.css'
 import { ActionButton, InputButton, InputField } from './../components'
 
 const PetForm = props => (
-    <div className='pet-form'>
+    <div id='pet-form'>
         <header>
-            <h2>Register your PetMain</h2>
-            <nav>
+            <h2>{'Register your PetMain'}</h2>
+            <nav className='action-items'>
                 <ActionButton icon='delete' title={'Delete'} onClick={props.onClickDelete} />
             </nav>
         </header>
-        <form onSubmit={props.onSubmit}>
+        <form method='post' action='/' onSubmit={props.onSubmit}>
             <InputField
                 label={'Name'}
                 name='name'
@@ -31,13 +31,7 @@ const PetForm = props => (
                 readOnly={false}
                 pattern='.*[\w]+.*'
                 required
-                maxLength={100}
-                dataListItems={[
-                    'Mutt',
-                    'Pit Bull',
-                    'Rottweiler',
-                    'Poodle'
-                ]} />
+                maxLength={100} />
 
             <InputField
                 label={'Size'}
@@ -45,11 +39,9 @@ const PetForm = props => (
                 value={props.size}
                 onChange={props.onChange}
                 readOnly={false}
-                required
-                maxLength={100}
                 pattern='.*[\w]+.*'
-                autoFocus />
-
+                required
+                maxLength={100} />
 
             <InputField
                 label={'Weight'}
@@ -57,12 +49,10 @@ const PetForm = props => (
                 value={props.weight}
                 onChange={props.onChange}
                 readOnly={false}
-                required
-                maxLength={100}
                 pattern='.*[\w]+.*'
-                autoFocus />
+                required
+                maxLength={100} />
 
-            <p />
             <div>
                 <InputButton type='submit' text={'Save'} disabled={false} />
             </div>

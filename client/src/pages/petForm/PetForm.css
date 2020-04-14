@@ -1,0 +1,60 @@
+#pet-form header {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin: 20px;
+}
+
+#pet-form header h2 {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+#pet-form header .action-items {
+    text-align: right;
+}
+
+#pet-form header .action-items button {
+    float: right;
+    margin: 20px 10.5px 0 0;
+}
+
+#pet-form form {
+    background-color: #ffffff;
+    border-radius: 2px;
+    display: grid;
+    grid-gap: 15px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#pet-form form button {
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 375px) {
+    #pet-form form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #pet-form form :nth-child(1),
+    #pet-form form :nth-child(2),
+    #pet-form form :nth-child(3),
+    #pet-form form :nth-child(4),
+    #pet-form form :nth-child(5) {
+        grid-column: span 2;
+    }
+    #pet-form form button {
+        max-width: 150px;
+        float: left;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    #pet-form form {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #pet-form form button {
+        max-width: 180px;
+        float: left;
+    }
+}
