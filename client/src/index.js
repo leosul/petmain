@@ -1,9 +1,8 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
-import PetFormContainer from './pages/petForm/PetFormContainer'
-//import App from './pages/app/App'
+import routes from './routes'
 
 ReactDOM.render(
-    <PetFormContainer />, document.getElementById('root'))
+    routes,
+    document.getElementById('root')
+)

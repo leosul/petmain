@@ -1,4 +1,4 @@
-import SHOW_TOAST from "./../actions";
+import { SHOW_TOAST } from "./../actions";
 
 const initialState = {
     showToast: 0,
