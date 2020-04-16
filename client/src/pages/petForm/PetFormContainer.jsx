@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import PetForm from './PetForm'
 import { connect } from 'react-redux'
 import Fetcher from './../../utils/Fetcher'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { showToast } from './../../actions'
 const { confirm } = window
 
@@ -14,6 +14,7 @@ class PetFormContainer extends Component {
         this.fetcher = new Fetcher()
 
         this.state = {
+            redirect: false,
             name: '',
             breed: '',
             size: '',
@@ -25,9 +26,10 @@ class PetFormContainer extends Component {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    async handleSubmit() {
-        const { name, breed, size, weight } = this.state
+    async handleSubmit(e) {
+        e.preventDefault()
 
+        const { name, breed, size, weight } = this.state
         const pet = {
             name: name.trim(),
             breed: breed.trim(),
@@ -38,9 +40,11 @@ class PetFormContainer extends Component {
         const res = await this.fetcher.post('pets', pet)
 
         if (res.ok) {
+            this.setState(() => ({ redirect: true }))
             this.props.dispatch(showToast('Pet Saved'))
         }
         else {
+            this.setState(() => ({ saving: false }))
             this.props.dispatch(showToast('Failed to Save'))
         }
     }
@@ -56,24 +60,24 @@ class PetFormContainer extends Component {
             const { id } = this.state
             const res = await this.fetcher.delete(`pets/${id}`)
             if (res.ok) {
+                this.setState(() => ({ redirect: true }))
                 this.props.dispatch(showToast('Pet Deleted'))
             } else {
+                this.setState(() => ({ saving: false }))
                 this.props.dispatch(showToast('Failed to Delete'))
             }
         }
     }
 
     render() {
-        return <PetForm
-            name={this.state.name}
-            breed={this.state.breed}
-            size={this.state.size}
-            weight={this.state.weight}
-
-            onChange={this.handleChange}
-            onSubmit={this.handleSubmit}
-            onDelete={this.handleDelete}
-        />
+        return this.state.redirect ? <Redirect to='/' /> :
+            <PetForm
+                {...this.props}
+                {...this.state}
+                onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
+                onDelete={this.handleDelete}
+            />
     }
 }
 
