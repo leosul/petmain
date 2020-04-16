@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import PetForm from './PetForm'
+import { connect } from 'react-redux'
 import Fetcher from './../../utils/Fetcher'
+import { withRouter } from 'react-router-dom'
+import { showToast } from './../../actions'
 const { confirm } = window
 
-export default class PetFormContainer extends Component {
+class PetFormContainer extends Component {
     constructor(props) {
         super(props)
 
@@ -34,10 +38,10 @@ export default class PetFormContainer extends Component {
         const res = await this.fetcher.post('pets', pet)
 
         if (res.ok) {
-            confirm('Save')
+            this.props.dispatch(showToast('Pet Saved'))
         }
         else {
-            confirm('Problem')
+            this.props.dispatch(showToast('Failed to Save'))
         }
     }
 
@@ -52,7 +56,9 @@ export default class PetFormContainer extends Component {
             const { id } = this.state
             const res = await this.fetcher.delete(`pets/${id}`)
             if (res.ok) {
+                this.props.dispatch(showToast('Pet Deleted'))
             } else {
+                this.props.dispatch(showToast('Failed to Delete'))
             }
         }
     }
@@ -70,3 +76,14 @@ export default class PetFormContainer extends Component {
         />
     }
 }
+
+PetFormContainer.propTypes = {
+    fetcher: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
+
+
+const stateToProps = () => ({
+})
+
+export default withRouter(connect(stateToProps)(PetFormContainer))

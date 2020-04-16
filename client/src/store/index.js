@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { persistReducer, persistStore } from 'redux-persist'
-import reducer from './../reducers'
+import reducer from '../reducers'
 import storage from 'redux-persist/lib/storage'
 import createEncryptor from 'redux-persist-transform-encrypt'
 

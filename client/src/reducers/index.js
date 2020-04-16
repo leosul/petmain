@@ -1,19 +1,22 @@
-import { REHYDRATE } from 'redux-persist'
+import SHOW_TOAST from "./../actions";
+
+const initialState = {
+    showToast: 0,
+    toastMessage: "",
+};
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case REHYDRATE:
-            if (action.payload) {
-                return {
-                    ...state
-                }
-            } else {
-                return state
-            }
+        case SHOW_TOAST:
+            return {
+                ...state,
+                showToast: new Date().getTime(),
+                toastMessage: action.message,
+            };
 
         default:
-            return (state)
+            return state;
     }
 }
 
-export default reducer
+export default reducer;
