@@ -12,6 +12,7 @@ import { store, persistor } from './store'
 
 import AppContainer from './pages/app/App'
 import PetFormContainer from './pages/petForm/PetFormContainer'
+import PetFormListContainer from './pages/petList/PetListContainer'
 
 const routes = (
     <Provider store={store}>
@@ -19,7 +20,8 @@ const routes = (
         <Router>
           <AppContainer>
             <Switch>
-              <Route path='/pets' component={PetFormContainer} exact />
+              <Route path='/pets/:id' component={PetFormContainer} exact />
+              <Route path='/' component={PetFormListContainer} exact />
               <Redirect from='*' to='/' />
             </Switch>
           </AppContainer>
