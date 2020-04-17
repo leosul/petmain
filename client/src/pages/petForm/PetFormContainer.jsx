@@ -16,6 +16,7 @@ class PetFormContainer extends Component {
 
         this.state = {
             redirect: false,
+            pageTitle: (id === 'new') ? 'Add new PetMain' : 'Edit PetMain',
             id: (id !== 'new') ? id : '',
             name: (pet && pet.name) || '',
             breed: (pet && pet.breed) || '',

@@ -1,16 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './PetForm.css'
-import { ActionButton, InputButton, InputField } from './../components'
+import './WalkerForm.css'
+import { InputButton, InputField } from './../components'
 
-const PetForm = props => (
-    <div id='pet-form'>
+const WalkerForm = props => (
+    <div id='walker-form'>
         <header>
-        <h2>{props.pageTitle}</h2>
-            <nav className='action-items'>
-                <ActionButton icon='delete' title={'Delete'} onClick={props.onDelete} />
-            </nav>
+            <h2>{props.pageTitle}</h2>
         </header>
+
         <form method='post' action='/' onSubmit={props.onSubmit}>
             <InputField
                 label={'Name'}
@@ -24,9 +22,9 @@ const PetForm = props => (
                 autoFocus />
 
             <InputField
-                label={'Breed'}
-                name='breed'
-                value={props.breed}
+                label={'Title'}
+                name='title'
+                value={props.title}
                 onChange={props.onChange}
                 readOnly={false}
                 pattern='.*[\w]+.*'
@@ -34,9 +32,9 @@ const PetForm = props => (
                 maxLength={100} />
 
             <InputField
-                label={'Size'}
-                name='size'
-                value={props.size}
+                label={'Country'}
+                name='country'
+                value={props.country}
                 onChange={props.onChange}
                 readOnly={false}
                 pattern='.*[\w]+.*'
@@ -44,29 +42,41 @@ const PetForm = props => (
                 maxLength={100} />
 
             <InputField
-                label={'Weight'}
-                name='weight'
-                value={props.weight}
+                label={'About'}
+                name='about'
+                value={props.about}
                 onChange={props.onChange}
                 readOnly={false}
                 pattern='.*[\w]+.*'
                 required
-                maxLength={100} />
+                maxLength={500} />
+
+            <InputField
+                label={'Price'}
+                name='price'
+                value={props.price}
+                onChange={props.onChange}
+                readOnly={false}
+                pattern='.*[\w]+.*'
+                required
+                maxLength={500} />
 
             <div>
                 <InputButton type='submit' text={'Save'} disabled={false} />
             </div>
         </form>
+
     </div>
 )
 
-PetForm.propTypes = {
+WalkerForm.propTypes = {
     name: PropTypes.string.isRequired,
-    breed: PropTypes.string.isRequired,
-    size: PropTypes.string.isRequired,
-    weight: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    about: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
 }
 
-export default PetForm
+export default WalkerForm

@@ -13,6 +13,7 @@ import AuthorizedRoute from './pages/authorizedRoute/AuthorizedRoute'
 import AppContainer from './pages/app/App'
 import PetFormContainer from './pages/petForm/PetFormContainer'
 import PetFormListContainer from './pages/petList/PetListContainer'
+import WalkerFormContainer from './pages/walkerForm/WalkerFormContainer'
 
 const routes = (
     <Provider store={store}>
@@ -21,7 +22,8 @@ const routes = (
           <AppContainer>
             <Switch>
               <AuthorizedRoute path='/pets/:id' component={PetFormContainer} exact />
-              <AuthorizedRoute path='/' component={PetFormListContainer} exact />
+              <AuthorizedRoute path='/walkers/:id' component={WalkerFormContainer} exact />
+              <AuthorizedRoute path='/pets' component={PetFormListContainer} exact />
               <Redirect from='*' to='/' />
             </Switch>
           </AppContainer>
