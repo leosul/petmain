@@ -4,6 +4,12 @@ const { mongoose } = require('./../database/connection')
 const ObjectId = mongoose.SchemaTypes.ObjectId
 
 const WalkerSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        maxlength: 100,
+        trim: true
+    },
     title: {
         type: String,
         required: true,
@@ -16,10 +22,10 @@ const WalkerSchema = new mongoose.Schema({
         maxlength: 100,
         trim: true
     },
-    text: {
+    about: {
         type: String,
         required: true,
-        maxlength: 300,
+        maxlength: 500,
         trim: true
     },
     price: {
