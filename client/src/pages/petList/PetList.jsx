@@ -15,7 +15,7 @@ const PetList = ({ pets, hasNextPage, loadPets, listProgress }) => (
         (!hasNextPage && pets.length === 0)
           ? <PetListItemContainer key={'placeholder'} placeholder={'Add your PetMain'} />
           : pets.map(pet =>
-            <PetListItemContainer key={pet._id} book={pet} />
+            <PetListItemContainer key={pet._id} pet={pet} />
           )
       }
     </InfiniteScroll>
@@ -26,10 +26,9 @@ const PetList = ({ pets, hasNextPage, loadPets, listProgress }) => (
 )
 
 PetList.propTypes = {
-  R: PropTypes.object.isRequired,
-  books: PropTypes.array.isRequired,
+  pets: PropTypes.array.isRequired,
   hasNextPage: PropTypes.bool.isRequired,
-  loadBooks: PropTypes.func.isRequired
+  loadPets: PropTypes.func.isRequired
 }
 
 export default PetList

@@ -40,7 +40,6 @@ class PetListContainer extends Component {
 }
 
 PetListContainer.propTypes = {
-  R: PropTypes.object.isRequired,
   fetcher: PropTypes.object.isRequired
 }
 

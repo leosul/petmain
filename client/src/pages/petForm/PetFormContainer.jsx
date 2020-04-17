@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PetForm from './PetForm'
 import { connect } from 'react-redux'
-import Fetcher from './../../utils/Fetcher'
 import { withRouter, Redirect } from 'react-router-dom'
 import { showToast } from './../../actions'
 const { confirm } = window
@@ -11,19 +10,48 @@ class PetFormContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.fetcher = new Fetcher()
+        this.fetcher = this.props.fetcher
+        const { match: { params: { id } }, location: { state } } = this.props
+        const pet = state && state.pet
 
         this.state = {
             redirect: false,
-            name: '',
-            breed: '',
-            size: '',
-            weight: ''
+            id: (id !== 'new') ? id : '',
+            name: (pet && pet.name) || '',
+            breed: (pet && pet.breed) || '',
+            size: (pet && pet.size) || '',
+            weight: (pet && pet.weight) || '',
         }
 
+        this.loadPet = this.loadPet.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+    }
+
+    componentDidMount() {
+        const { id } = this.state
+
+        if (id) {
+            this.loadPet(id)
+        }
+    }
+
+    async loadPet(id) {
+
+        const res = await this.fetcher.get(`pets/${id}`)
+
+        if (res.ok) {
+            const pet = await res.json()
+            this.setState(() => ({
+                name: pet.name,
+                breed: pet.breed,
+                size: pet.size,
+                weight: pet.weight
+            }))
+        } else {
+            this.setState(() => ({ redirect: true }))
+        }
     }
 
     async handleSubmit(e) {
@@ -44,7 +72,7 @@ class PetFormContainer extends Component {
             this.props.dispatch(showToast('Pet Saved'))
         }
         else {
-            this.setState(() => ({ saving: false }))
+            this.setState(() => ({ redirect: false }))
             this.props.dispatch(showToast('Failed to Save'))
         }
     }
@@ -63,7 +91,7 @@ class PetFormContainer extends Component {
                 this.setState(() => ({ redirect: true }))
                 this.props.dispatch(showToast('Pet Deleted'))
             } else {
-                this.setState(() => ({ saving: false }))
+                this.setState(() => ({ redirect: false }))
                 this.props.dispatch(showToast('Failed to Delete'))
             }
         }

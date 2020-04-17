@@ -8,7 +8,7 @@ const PetForm = props => (
         <header>
             <h2>{'Register your PetMain'}</h2>
             <nav className='action-items'>
-                <ActionButton icon='delete' title={'Delete'} onClick={props.onClickDelete} />
+                <ActionButton icon='delete' title={'Delete'} onClick={props.onDelete} />
             </nav>
         </header>
         <form method='post' action='/' onSubmit={props.onSubmit}>
