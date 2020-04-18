@@ -1,0 +1,61 @@
+button {
+    cursor: pointer;
+    border: 0;
+    text-decoration: dashed;
+    font-size: inherit;
+    font-family: 'Signika Negative', sans-serif;
+    -webkit-transition: all 0.5s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+    transition: all 0.5s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+    font-weight: 900;
+    text-align: right;
+    margin: 25px;
+    background-color: transparent;
+    padding: 40px;
+    width: 90%;
+}
+
+button.stretchy-more-pets {
+    background-image: url('/images/pet_black.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    background-position: left;
+}
+
+button.stretchy-more-walker {
+    background-image: url('/images/pet_become_black.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    background-position: left;
+}
+
+button.stretchy-more-find {
+    background-image: url('/images/pet_find_black.png');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    background-position: left;
+}
+
+button:hover,
+button:focus,
+button:active {
+    letter-spacing: 0.200rem;
+}
+
+.container {
+    display: inline-block;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all .2s;
+    margin: 2px;
+    width: 32%;
+    text-align: center;
+}
+
+.stretchy-container {
+    margin: 1%;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 40px;
+}

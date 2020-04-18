@@ -4,6 +4,7 @@ import InputField from './inputField/InputField'
 import FloatingButton from './floatingButton/FloatingButton'
 import ToastContainer from './toast/ToastContainer'
 import ListLoader from './listLoader/ListLoader'
+import StretchyButton from './stretchyButton/StretchyButton'
 
 export {
     ActionButton,
@@ -11,5 +12,6 @@ export {
     InputField,
     FloatingButton,
     ToastContainer,
-    ListLoader
+    ListLoader,
+    StretchyButton
 }
