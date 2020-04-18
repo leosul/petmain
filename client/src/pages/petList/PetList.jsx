@@ -19,7 +19,9 @@ const PetList = ({ pets, hasNextPage, loadPets }) => (
                     )
             }
         </InfiniteScroll>
-        <FloatingButton icon='add' url='/pets/new' title={'Add new PetMain'} />
+        {pets.length > 0 &&
+            <FloatingButton icon='add' url='/pets/new' title={'Add new PetMain'} />
+        }
     </div>
 )
 
