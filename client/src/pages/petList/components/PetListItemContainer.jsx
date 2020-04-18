@@ -12,7 +12,7 @@ class PetListItemContainer extends Component {
 }
 
 PetListItemContainer.propTypes = {
-  book: PropTypes.object,
+  pet: PropTypes.object,
   placeholder: PropTypes.string
 }
 

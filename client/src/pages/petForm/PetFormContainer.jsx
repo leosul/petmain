@@ -58,7 +58,7 @@ class PetFormContainer extends Component {
     async handleSubmit(e) {
         e.preventDefault()
 
-        const { name, breed, size, weight } = this.state
+        const { id, name, breed, size, weight } = this.state
         const pet = {
             name: name.trim(),
             breed: breed.trim(),
@@ -66,16 +66,28 @@ class PetFormContainer extends Component {
             weight: weight.trim()
         }
 
-        const res = await this.fetcher.post('pets', pet)
+        if (!id) {
+            const res = await this.fetcher.post('pets', pet)
+            if (res.ok) {
+                this.setState(() => ({ redirect: true }))
+                this.props.dispatch(showToast('Pet Saved'))
+            }
+            else {
+                this.setState(() => ({ redirect: false }))
+                this.props.dispatch(showToast('Failed to Save'))
+            }
+        } else {
+            const res = await this.fetcher.put(`pets/${id}`, pet)
+            if (res.ok) {
+                this.setState(() => ({ redirect: true }))
+                this.props.dispatch(showToast('Pet Saved'))
+            }
+            else {
+                this.setState(() => ({ redirect: false }))
+                this.props.dispatch(showToast('Failed to Save'))
+            }
+        }
 
-        if (res.ok) {
-            this.setState(() => ({ redirect: true }))
-            this.props.dispatch(showToast('Pet Saved'))
-        }
-        else {
-            this.setState(() => ({ redirect: false }))
-            this.props.dispatch(showToast('Failed to Save'))
-        }
     }
 
     handleChange(e) {
@@ -99,7 +111,7 @@ class PetFormContainer extends Component {
     }
 
     render() {
-        return this.state.redirect ? <Redirect to='/' /> :
+        return this.state.redirect ? <Redirect to='/pets' /> :
             <PetForm
                 {...this.props}
                 {...this.state}

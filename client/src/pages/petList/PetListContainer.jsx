@@ -14,8 +14,7 @@ class PetListContainer extends Component {
     this.state = {
       pets: [],
       hasNextPage: true,
-      nextPage: 1,
-      listProgress: 0
+      nextPage: 1
     }
 
     this.loadPets = this.loadPets.bind(this)
@@ -25,10 +24,10 @@ class PetListContainer extends Component {
     const res = await this.fetcher.get(`pets?page=${this.state.nextPage}`)
 
     if (res.ok) {
-      let { pets, hasNextPage, nextPage, totalDocs } = await res.json()
+      let { pets, hasNextPage, nextPage } = await res.json()
       pets = [...this.state.pets, ...pets]
 
-      this.setState({ pets, hasNextPage, nextPage, listProgress: totalDocs })
+      this.setState({ pets, hasNextPage, nextPage })
     }
   }
 

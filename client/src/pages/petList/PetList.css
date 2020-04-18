@@ -20,7 +20,7 @@
 }
 
 #pet-list header .MuiLinearProgress-barColorPrimary {
-    background-color: #9c27b0;
+    background-color: #ffeb3b;
 }
 
 #pet-list .pet-list {
@@ -111,9 +111,9 @@
 }
 
 #pet-list .pet-list .pet-list-item.placeholder span {
-    background: url('/images/ic_add_circle_purple.png') left center no-repeat;
+    background: url('/images/add.png') left center no-repeat;
     background-size: contain;
-    color: #9c27b0;
+    color: #ffeb3b;
     padding: 3px 0 3px 30px;
 }
 
