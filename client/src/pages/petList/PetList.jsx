@@ -8,7 +8,7 @@ import './PetList.css'
 const PetList = ({ pets, hasNextPage, loadPets }) => (
     <div id='pet-list'>
         <header>
-            <h1>Your Pets</h1>
+            <h1>My Pets</h1>
         </header>
         <InfiniteScroll className='pet-list' pageStart={1} hasMore={hasNextPage} loadMore={loadPets} loader={<ListLoader key={0} />}>
             {
