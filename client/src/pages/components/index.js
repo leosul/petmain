@@ -5,6 +5,7 @@ import FloatingButton from './floatingButton/FloatingButton'
 import ToastContainer from './toast/ToastContainer'
 import ListLoader from './listLoader/ListLoader'
 import StretchyButton from './stretchyButton/StretchyButton'
+import TabControl from './tabControl/TabControl'
 
 export {
     ActionButton,
@@ -13,5 +14,6 @@ export {
     FloatingButton,
     ToastContainer,
     ListLoader,
-    StretchyButton
+    StretchyButton,
+    TabControl
 }
