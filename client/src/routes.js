@@ -10,7 +10,7 @@ import {
 import { store, persistor } from './store'
 
 import AuthorizedRoute from './pages/authorizedRoute/AuthorizedRoute'
-import MainForm from './pages/main/MainForm'
+import MainFormContainer from './pages/main/MainFormContainer'
 import AppContainer from './pages/app/App'
 import PetFormContainer from './pages/petForm/PetFormContainer'
 import PetFormListContainer from './pages/petList/PetListContainer'
@@ -22,7 +22,7 @@ const routes = (
             <Router>
                 <AppContainer>
                     <Switch>
-                        <AuthorizedRoute path='/' component={MainForm} exact />
+                        <AuthorizedRoute path='/' component={MainFormContainer} exact />
                         <AuthorizedRoute path='/pets/:id' component={PetFormContainer} exact />
                         <AuthorizedRoute path='/walkers/:id' component={WalkerFormContainer} exact />
                         <AuthorizedRoute path='/pets' component={PetFormListContainer} exact />
