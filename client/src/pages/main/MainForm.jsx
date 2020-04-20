@@ -1,12 +1,13 @@
 import React from 'react'
-import { StretchyButton } from './../components'
+//import './MainForm.css'
+import { TabControl } from './../components'
 
 const MainForm = props => (
-    <div id='pet-form'>
+    <div className='pet-form'>
         <header>
         </header>
-        <div >
-            <StretchyButton />
+        <div className='tab-list'>
+            <TabControl onChange={props.onChange} list={props.list} index={props.index} />
         </div>
     </div>
 )
