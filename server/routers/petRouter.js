@@ -4,8 +4,18 @@ const petService = require('../services/petService')
 
 router.get('/', async(req, res) => {
     const { query } = req
-    const pets = await petService.findAll(query.page)
-    res.json(pets)
+
+    try {
+        const pets = await petService.findAll(query.page)
+
+        if (pets)
+            res.json(pets)
+        else {
+            res.sendStatus(404)
+        }
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
 })
 
 router.get('/:id', async(req, res) => {
