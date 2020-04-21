@@ -4,8 +4,17 @@ const walkerService = require('../services/walkerService')
 
 router.get('/', async(req, res) => {
     const { query } = req
-    const walkes = await walkerService.findAll(query.page)
-    res.json(walkes)
+
+    try {
+        const walkes = await walkerService.findAll(query.page)
+
+        if (walkes) res.json(walkes);
+        else {
+            res.sendStatus(404);
+        }
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
 })
 
 router.get('/:id', async(req, res) => {

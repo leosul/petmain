@@ -1,70 +1,76 @@
-const { Router } = require('express')
-const router = new Router()
-const petService = require('../services/petService')
+const { Router } = require("express");
+const router = new Router();
+const petService = require("../services/petService");
 
-router.get('/', async(req, res) => {
-    const { query } = req
+router.get("/", async(req, res) => {
+    const { query } = req;
 
     try {
-        const pets = await petService.findAll(query.page)
+        const pets = await petService.findAll(query.page);
 
-        if (pets)
-            res.json(pets)
+        if (pets) res.json(pets);
         else {
-            res.sendStatus(404)
+            res.sendStatus(404);
         }
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send(error.message);
     }
-})
+});
 
-router.get('/:id', async(req, res) => {
-    const { params: { id } } = req
+router.get("/:id", async(req, res) => {
+    const {
+        params: { id },
+    } = req;
 
     try {
-        const pet = await petService.findById(id)
+        const pet = await petService.findById(id);
 
         if (pet) {
-            res.json(pet)
+            res.json(pet);
         } else {
-            res.sendStatus(404)
+            res.sendStatus(404);
         }
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send(error.message);
     }
-})
+});
 
-router.post('/', async(req, res) => {
-    const { body } = req
+router.post("/", async(req, res) => {
+    const { body } = req;
 
     try {
-        const pet = await petService.insert(body)
-        res.status(201).json(pet)
+        const pet = await petService.insert(body);
+        res.status(201).json(pet);
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send(error.message);
     }
-})
+});
 
-router.put('/:id', async(req, res) => {
-    const { body, params: { id } } = req
+router.put("/:id", async(req, res) => {
+    const {
+        body,
+        params: { id },
+    } = req;
 
     try {
-        const pet = await petService.update(id, body)
-        res.status(200).json(pet)
+        const pet = await petService.update(id, body);
+        res.status(200).json(pet);
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send(error.message);
     }
-})
+});
 
-router.delete('/:id', async(req, res) => {
-    const { params: { id } } = req
+router.delete("/:id", async(req, res) => {
+    const {
+        params: { id },
+    } = req;
 
     try {
-        await petService.remove(id)
-        res.sendStatus(204)
+        await petService.remove(id);
+        res.sendStatus(204);
     } catch (error) {
-        res.status(400).send(error.message)
+        res.status(400).send(error.message);
     }
-})
+});
 
-module.exports = router
+module.exports = router;
