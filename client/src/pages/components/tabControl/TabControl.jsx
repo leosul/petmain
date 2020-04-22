@@ -45,7 +45,7 @@ const TabControl = ({ store, onChange, index }) => (
             <Paper>
                 {store.map(s => {
                     if (s.index === index)
-                        return <h1>{s.label}</h1>
+                        return <div>{s.component}</div>
                     else
                         return null
                 }

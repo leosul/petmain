@@ -7,7 +7,7 @@ const MainForm = props => (
         <header>
         </header>
         <div className='tab-list'>
-            <TabControl onChange={props.onChange} list={props.list} index={props.index} />
+            <TabControl store={props.store} onChange={props.onChange} index={props.index}/>
         </div>
     </div>
 )
