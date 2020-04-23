@@ -65,7 +65,7 @@ export default function ScrollableTabsButtonAuto() {
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" component={Link} to='/walkers/1'>
                             Become a PetMain
                         </Button>
                     </CardActions>
@@ -89,7 +89,7 @@ export default function ScrollableTabsButtonAuto() {
                         </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button size="small" color="primary">
+                        <Button size="small" color="primary" component={Link} to='/findWalkers'>
                             Find Walker
                         </Button>
                     </CardActions>
