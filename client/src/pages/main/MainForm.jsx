@@ -1,5 +1,5 @@
 import React from 'react'
-//import './MainForm.css'
+import './MainForm.css'
 import { TabControl } from './../components'
 
 const MainForm = props => (
