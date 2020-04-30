@@ -6,12 +6,12 @@ import './App.css'
 
 const App = ({ children, user }) => {
     return (
-        <main>
+        <main className={`app ${!user ? 'unauthorized' : ''}`}>
             <header className='app-header'>
                 <h1 className='app-title'>
                     <Link to='/'>
                         PetMain
-            <span>beta</span>
+                        <span>beta</span>
                     </Link>
                 </h1>
                 {user &&
@@ -23,6 +23,9 @@ const App = ({ children, user }) => {
                     </span>
                 }
             </header>
+            <section className='content'>
+                {children}
+            </section>
             <footer />
             <ToastContainer />
         </main>

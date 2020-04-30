@@ -20,7 +20,7 @@ main>header h1 {
 }
 
 main>header h1 a {
-    color: #c8b900;
+    color: olive;
     text-decoration: none;
 }
 
@@ -55,7 +55,7 @@ main>header h1 a span {
 }
 
 main>header .user {
-    padding: 0 30px;
+    padding: 0 20px;
     text-align: right;
 }
 
@@ -114,7 +114,7 @@ main>header .user .wrapper .name {
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     main>header .user .wrapper:hover .name {
-        color: #ffeb3b;
+        color: #9c27b0;
     }
 }
 

@@ -4,13 +4,15 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import {
     BrowserRouter as Router,
     Switch,
-    Redirect
+    Redirect,
+    Route
 } from 'react-router-dom'
 
 import { store, persistor } from './store'
 
 import AuthorizedRoute from './pages/authorizedRoute/AuthorizedRoute'
-import AppContainer from './pages/app/App'
+import SigninContainer from './pages/signin/SigninContainer'
+import AppContainer from './pages/app/AppContainer'
 import PetFormContainer from './pages/petForm/PetFormContainer'
 import PetFormListContainer from './pages/petList/PetListContainer'
 import WalkerFormContainer from './pages/walkerForm/WalkerFormContainer'
@@ -23,6 +25,7 @@ const routes = (
             <Router>
                 <AppContainer>
                     <Switch>
+                        <Route path='/signin' component={SigninContainer} exact />
                         <AuthorizedRoute path='/' component={PetMainCard} exact />
                         <AuthorizedRoute path='/pets/:id' component={PetFormContainer} exact />
                         <AuthorizedRoute path='/walkers/:id' component={WalkerFormContainer} exact />

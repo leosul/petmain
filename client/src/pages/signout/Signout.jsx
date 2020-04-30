@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { InputButton } from './../components'
 import './Signout.css'
 
 const Singout = ({ user, onClickSignOut }) => (
@@ -17,7 +18,7 @@ const Singout = ({ user, onClickSignOut }) => (
           </p>
         </div>
         <div>
-          <button onClick={onClickSignOut}>Sign Out</button>
+          <InputButton text={'Sign Out'} onClick={onClickSignOut} />
         </div>
       </div>
     </div>

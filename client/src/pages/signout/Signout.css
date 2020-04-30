@@ -88,8 +88,8 @@
 }
 
 #signout .wrapper .language-info ul li button.selected {
-    background-image: url('/images/ic_check_purple.png');
-    color: #9c27b0;
+    background-image: url('/images/check.png');
+    color: #ffeb3b;
     font-weight: bold;
 }
 
