@@ -4,6 +4,11 @@ const { mongoose } = require('./../database/connection')
 const ObjectId = mongoose.SchemaTypes.ObjectId
 
 const PetSchema = new mongoose.Schema({
+    userId: {
+        type: ObjectId,
+        required: true,
+        index: true
+    },
     name: {
         type: String,
         required: true,
