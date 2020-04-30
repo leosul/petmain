@@ -15,6 +15,7 @@ import PetFormContainer from './pages/petForm/PetFormContainer'
 import PetFormListContainer from './pages/petList/PetListContainer'
 import WalkerFormContainer from './pages/walkerForm/WalkerFormContainer'
 import PetMainCard from './pages/petMainCard/PetMainCard'
+import SignoutContainer from './pages/signout/SignoutContainer'
 
 const routes = (
     <Provider store={store}>
@@ -26,6 +27,7 @@ const routes = (
                         <AuthorizedRoute path='/pets/:id' component={PetFormContainer} exact />
                         <AuthorizedRoute path='/walkers/:id' component={WalkerFormContainer} exact />
                         <AuthorizedRoute path='/pets' component={PetFormListContainer} exact />
+                        <AuthorizedRoute path='/signout' component={SignoutContainer} exact />
                         <Redirect from='*' to='/' />
                     </Switch>
                 </AppContainer>
