@@ -3,10 +3,10 @@ const router = new Router();
 const petService = require("../services/petService");
 
 router.get("/", async(req, res) => {
-    const { query } = req;
+    const { userId, query } = req;
 
     try {
-        const pets = await petService.findAll(query.page);
+        const pets = await petService.findAll(userId, query.page);
 
         if (pets) res.json(pets);
         else {
@@ -18,12 +18,10 @@ router.get("/", async(req, res) => {
 });
 
 router.get("/:id", async(req, res) => {
-    const {
-        params: { id },
-    } = req;
+    const { params: { id }, userId } = req
 
     try {
-        const pet = await petService.findById(id);
+        const pet = await petService.findById(id, userId);
 
         if (pet) {
             res.json(pet);
@@ -36,7 +34,8 @@ router.get("/:id", async(req, res) => {
 });
 
 router.post("/", async(req, res) => {
-    const { body } = req;
+    const { body, userId } = req
+    body.userId = userId
 
     try {
         const pet = await petService.insert(body);
@@ -47,10 +46,8 @@ router.post("/", async(req, res) => {
 });
 
 router.put("/:id", async(req, res) => {
-    const {
-        body,
-        params: { id },
-    } = req;
+    const { body, params: { id }, userId } = req
+    body.userId = userId
 
     try {
         const pet = await petService.update(id, body);
@@ -61,12 +58,10 @@ router.put("/:id", async(req, res) => {
 });
 
 router.delete("/:id", async(req, res) => {
-    const {
-        params: { id },
-    } = req;
+    const { params: { id }, userId } = req
 
     try {
-        await petService.remove(id);
+        await petService.remove(id, userId);
         res.sendStatus(204);
     } catch (error) {
         res.status(400).send(error.message);

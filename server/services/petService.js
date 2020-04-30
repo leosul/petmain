@@ -1,12 +1,12 @@
 const petRepository = require('./../repositories/petRepository')
 const { beforeInsert } = require('./../validators/petValidator')
 
-const findAll = (page) => {
-    return petRepository.findAll(page)
+const findAll = (userId, page) => {
+    return petRepository.findAll(userId, page)
 }
 
-const findById = (id) => {
-    return petRepository.findById(id)
+const findById = (id, userId) => {
+    return petRepository.findById(id, userId)
 }
 
 const insert = async(petData) => {
@@ -16,17 +16,17 @@ const insert = async(petData) => {
         throw new Error(message)
     }
 
-    const pet = await petRepository.insert(petData)
-    return findById(pet._id)
+    const pet = await petRepository.insert(petData, pet.userId)
+    return findById(pet._id, pet.userId)
 }
 
 const update = async(id, petData) => {
     const pet = await petRepository.update(id, petData)
-    return findById(pet._id)
+    return findById(pet._id, pet.userId)
 }
 
-const remove = (id) => {
-    return petRepository.remove(id)
+const remove = (id, userId) => {
+    return petRepository.remove(id, userId)
 }
 
 module.exports = {

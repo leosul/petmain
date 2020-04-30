@@ -1,19 +1,19 @@
 const Pet = require("../models/Pet");
 
-const findAll = (page) => {
+const findAll = (userId, page) => {
     const options = {
         page,
         limit: 20,
         sort: { name: 1 },
         customLabels: { docs: "pets" },
-        select: { createdAt: 0, __v: 0 },
+        select: { userId: 0, createdAt: 0, __v: 0 },
     };
 
-    return Pet.paginate({}, options);
+    return Pet.paginate({ userId }, options);
 };
 
-const findById = (_id) => {
-    return Pet.findOne({ _id }).select({ createdAt: 0, __v: 0 });
+const findById = (_id, userId) => {
+    return Pet.findOne({ _id, userId }).select({ userId: 0, createdAt: 0, __v: 0 });
 };
 
 const insert = (petData) => {
@@ -22,7 +22,7 @@ const insert = (petData) => {
 };
 
 const update = async(id, petData) => {
-    const pet = await findById(id, petData);
+    const pet = await findById(id, petData.userId);
 
     if (!pet) {
         throw new Error("not found");
@@ -32,8 +32,8 @@ const update = async(id, petData) => {
     return pet.save();
 };
 
-const remove = async(id) => {
-    const pet = await findById(id);
+const remove = async(id, userId) => {
+    const pet = await findById(id, userId);
 
     if (!pet) {
         throw new Error("not found");
@@ -42,8 +42,8 @@ const remove = async(id) => {
     return pet.remove();
 };
 
-const count = () => {
-    return Pet.countDocuments();
+const count = (userId) => {
+    return Pet.countDocuments(userId);
 };
 
 module.exports = {
