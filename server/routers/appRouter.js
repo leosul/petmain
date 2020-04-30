@@ -4,6 +4,7 @@ const petRouter = require('./petRouter')
 const breedRouter = require('./breedRouter')
 const versionRouter = require('./versionRouter')
 const versionRepository = require('../repositories/versionRepository')
+const authRouter = require('./authRouter')
 const router = new Router()
 
 router.get('/', (_req, res) => {
@@ -14,6 +15,7 @@ router.use('/walkers', walkerRouter)
 router.use('/pets', petRouter)
 router.use('/version', versionRouter)
 router.use('/breeds', breedRouter)
+router.use('/auth', authRouter)
 
 
 module.exports = router
