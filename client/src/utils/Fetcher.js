@@ -1,15 +1,23 @@
+const { logout } = require('./../actions')
 const { fetch } = window
 
 class Fetcher {
-    constructor() {
+    constructor(authorizationToken, dispatch) {
+        this.authorizationToken = authorizationToken
+        this.dispatch = dispatch
         this.baseUrl = '/api'
         this.headers = {
+            'Authorization': `bearer ${authorizationToken}`,
             'Content-Type': 'application/json'
         }
     }
 
     async executeRequest(req) {
         const res = await req
+
+        if (res.status === 401) {
+            this.dispatch(logout())
+        }
 
         return res
     }
