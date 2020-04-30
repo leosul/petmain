@@ -13,10 +13,12 @@ class AppContainer extends Component {
 }
 
 AppContainer.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  user: PropTypes.object
 }
 
-const stateToProps = () => ({
-})
+const stateToProps = ({ user }) => ({
+    user
+  })
 
 export default withRouter(connect(stateToProps)(AppContainer))

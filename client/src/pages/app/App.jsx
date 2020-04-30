@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { ToastContainer } from './../components'
 import './App.css'
 
-const App = ({ children }) => {
+const App = ({ children, user }) => {
     return (
         <main>
             <header className='app-header'>
@@ -14,16 +14,15 @@ const App = ({ children }) => {
             <span>beta</span>
                     </Link>
                 </h1>
-                <span className='user'>
-                    <Link className='wrapper' to='/pets'>
-                        <span className='picture' />
-                        <span className='name'>User Test</span>
-                    </Link>
-                </span>
+                {user &&
+                    <span className='user'>
+                        <Link className='wrapper' to='/signout'>
+                            <span className='picture' style={{ backgroundImage: `url(${user.picture})` }} />
+                            <span className='name'>{user.name}</span>
+                        </Link>
+                    </span>
+                }
             </header>
-            <section className='content'>
-                {children}
-            </section>
             <footer />
             <ToastContainer />
         </main>
