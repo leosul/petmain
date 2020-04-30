@@ -16,7 +16,7 @@ const insert = async(petData) => {
         throw new Error(message)
     }
 
-    const pet = await petRepository.insert(petData, pet.userId)
+    const pet = await petRepository.insert(petData)
     return findById(pet._id, pet.userId)
 }
 
