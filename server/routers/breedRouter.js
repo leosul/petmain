@@ -6,10 +6,10 @@ router.get("/", async(req, res) => {
     const { query } = req;
 
     try {
-        const breeds = await breedService.findAll(query.page);
+        const breeds = await breedService.findAll();
 
         if (breeds)
-            res.json(breeds);
+            res.send(breeds);
         else {
             res.sendStatus(404);
         }

@@ -15,7 +15,7 @@ router.get('/', (_req, res) => {
 router.use('/walkers', authenticator, walkerRouter)
 router.use('/pets', authenticator, petRouter)
 router.use('/version', versionRouter)
-router.use('/breeds', authenticator, breedRouter)
+router.use('/breeds', breedRouter)
 router.use('/auth', authRouter)
 
 

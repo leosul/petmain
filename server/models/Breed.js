@@ -1,7 +1,6 @@
-const mongoosePaginate = require('mongoose-paginate-v2')
 const { mongoose } = require('./../database/connection')
 
-const BreedSchema = new mongoose.Schema({
+const Breed = mongoose.model('Breed', {
     name: {
         type: String,
         required: true,
@@ -9,8 +8,5 @@ const BreedSchema = new mongoose.Schema({
         trim: true
     }
 })
-
-BreedSchema.plugin(mongoosePaginate)
-const Breed = mongoose.model('Breed', BreedSchema)
 
 module.exports = Breed

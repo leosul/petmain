@@ -1,7 +1,7 @@
 const breedRepository = require('../repositories/breedRepository')
 
-const findAll = (page) => {
-    return breedRepository.findAll(page)
+const findAll = () => {
+    return breedRepository.findAll()
 }
 
 const findById = (id) => {

@@ -6,7 +6,7 @@ import { ActionButton, InputButton, InputField } from './../components'
 const PetForm = props => (
     <div id='pet-form'>
         <header>
-        <h2>{props.pageTitle}</h2>
+            <h2>{props.pageTitle}</h2>
             <nav className='action-items'>
                 <ActionButton icon='delete' title={'Delete'} onClick={props.onDelete} />
             </nav>
@@ -31,7 +31,9 @@ const PetForm = props => (
                 readOnly={false}
                 pattern='.*[\w]+.*'
                 required
-                maxLength={100} />
+                maxLength={100}
+                dataListItems={props.parentBreeds.map(s => s.name)}
+            />
 
             <InputField
                 label={'Size'}

@@ -1,15 +1,7 @@
 const Breed = require("../models/Breed");
 
-const findAll = (page) => {
-    const options = {
-        page,
-        limit: 20,
-        sort: { name: 1 },
-        customLabels: { docs: "breeds" },
-        select: { createdAt: 0, __v: 0 },
-    };
-
-    return Breed.paginate({}, options);
+const findAll = () => {
+    return Breed.find();
 };
 
 const findById = (_id) => {

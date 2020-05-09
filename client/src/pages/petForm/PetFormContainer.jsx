@@ -22,6 +22,7 @@ class PetFormContainer extends Component {
             breed: (pet && pet.breed) || '',
             size: (pet && pet.size) || '',
             weight: (pet && pet.weight) || '',
+            parentBreeds: []
         }
 
         this.loadPet = this.loadPet.bind(this)
@@ -36,10 +37,20 @@ class PetFormContainer extends Component {
         if (id) {
             this.loadPet(id)
         }
+
+        this.loadParentBreed()
+    }
+
+    async loadParentBreed() {
+        const res = await this.fetcher.get(`breeds`)
+        const content = await res.json()
+
+        this.setState({
+            parentBreeds: content
+        })
     }
 
     async loadPet(id) {
-
         const res = await this.fetcher.get(`pets/${id}`)
 
         if (res.ok) {
@@ -118,6 +129,7 @@ class PetFormContainer extends Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 onDelete={this.handleDelete}
+                parentBreeds={this.state.parentBreeds}
             />
     }
 }
